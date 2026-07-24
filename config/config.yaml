@@ -1,0 +1,4 @@
+paths:
+  data_raw: data/raw
+  reports_dir: reports
+  dataset_inventory: reports/dataset_inventory.csv

@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env
+
+# Processed data
+data/processed/
+data/features/
+data/final/
+
+# Reports (optional)
+reports/inspection/
+reports/validation/
+
+# Raw datasets (IMPORTANT)
+data/raw/*.csv
+
+# Original downloaded datasets
+Datasets/
