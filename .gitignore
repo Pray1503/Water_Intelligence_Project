@@ -24,3 +24,13 @@ data/raw/*.csv
 
 # Original downloaded datasets
 Datasets/
+
+# Cleaned datasets
+data/cleaned/
+
+# Generated reports
+reports/cleaning/
+reports/profiling/
+
+# Terminal output
+output.txt

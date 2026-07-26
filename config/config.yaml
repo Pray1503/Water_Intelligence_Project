@@ -1,4 +1,8 @@
 paths:
   data_raw: data/raw
+  data_cleaned: data/cleaned
   reports_dir: reports
   dataset_inventory: reports/dataset_inventory.csv
+  profiling_dir: reports/profiling
+  validation_dir: reports/validation
+  cleaning_dir: reports/cleaning

@@ -1,4 +1,5 @@
 Dataset Name,Dataset Category,Relative Path,Absolute Path,File Size,Extension,Last Modified Timestamp,Parent Folder,Status
+groundwater,Unknown,raw/groundwater.csv,C:/Water_Intelligence_Project/data/raw/groundwater.csv,0,.csv,2026-07-25T16:50:25.016744,raw,RAW
 gwl_tel_6_hourly_gujarat_sw_gw_gj_2021_2025,Groundwater,raw/gwl_tel_6_hourly_gujarat_sw_gw_gj_2021_2025.csv,C:/Water_Intelligence_Project/data/raw/gwl_tel_6_hourly_gujarat_sw_gw_gj_2021_2025.csv,1123888698,.csv,2026-07-25T02:07:14.912041,raw,RAW
 humid_tele_hr_gujarat-sw-gw_gj_2021_2021,Humidity,raw/humid_tele_hr_gujarat-sw-gw_gj_2021_2021.csv,C:/Water_Intelligence_Project/data/raw/humid_tele_hr_gujarat-sw-gw_gj_2021_2021.csv,207826920,.csv,2026-07-25T01:37:46.102953,raw,RAW
 humid_tele_hr_gujarat-sw-gw_gj_2022_2022,Humidity,raw/humid_tele_hr_gujarat-sw-gw_gj_2022_2022.csv,C:/Water_Intelligence_Project/data/raw/humid_tele_hr_gujarat-sw-gw_gj_2022_2022.csv,325829801,.csv,2026-07-25T01:40:56.648964,raw,RAW

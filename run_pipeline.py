@@ -9,15 +9,27 @@ logging.basicConfig(level=logging.INFO, format='%(message)s')
 def main():
     project_root = Path(__file__).resolve().parent
     discover_script = project_root / 'scripts' / '01_discover_datasets.py'
+    profile_script = project_root / 'scripts' / '02_profile_datasets.py'
+    validate_script = project_root / 'scripts' / '03_validate_schemas.py'
+    clean_script = project_root / 'scripts' / '04_clean_datasets.py'
     
     try:
         # Run Phase 1A: Dataset Discovery
         subprocess.run([sys.executable, str(discover_script)], check=True)
+        
+        # Run Phase 1B Sprint 1: Dataset Profiling Setup
+        subprocess.run([sys.executable, str(profile_script)], check=True)
+        
+        # Run Phase 1C Sprint 1: Schema Validation
+        subprocess.run([sys.executable, str(validate_script)], check=True)
+
+        # Run Stage 4: Data Cleaning & Consolidation
+        subprocess.run([sys.executable, str(clean_script)], check=True)
     except subprocess.CalledProcessError as e:
         logging.error(f"Pipeline execution failed: {e}")
         sys.exit(1)
-    except FileNotFoundError:
-        logging.error(f"Could not find the script at {discover_script}")
+    except FileNotFoundError as e:
+        logging.error(f"Could not find the script: {e.filename}")
         sys.exit(1)
 
 if __name__ == "__main__":
