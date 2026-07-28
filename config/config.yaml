@@ -6,3 +6,4 @@ paths:
   profiling_dir: reports/profiling
   validation_dir: reports/validation
   cleaning_dir: reports/cleaning
+  audit_dir: reports/dataset_audit
