@@ -1,0 +1,24 @@
+{
+  "dataset_name": "river_level_daily_district",
+  "category": "river_level",
+  "source_files": [
+    "rwl_tel_hr_gujarat_sw_gw_013_2021_2025_cleaned.csv"
+  ],
+  "input_rows": 1778082,
+  "output_rows": 15558,
+  "aggregation_method": "mean",
+  "measurement_column": "River Water Level Telemetry Hourly (meter)",
+  "missing_measurements": 5,
+  "station_count_statistics": {
+    "min": 1,
+    "max": 9,
+    "mean": 3.01369070574624,
+    "median": 3.0
+  },
+  "district_count": 10,
+  "date_range": {
+    "start": "2021-01-01",
+    "end": "2025-12-31"
+  },
+  "execution_time_seconds": 1.682775599998422
+}

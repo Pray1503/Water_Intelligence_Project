@@ -1,0 +1,130 @@
+{
+  "merge_keys": [
+    "District LGD Code",
+    "Date"
+  ],
+  "merge_strategy": "outer",
+  "categories_merged": [
+    "groundwater",
+    "humidity",
+    "rainfall",
+    "river_level",
+    "temperature"
+  ],
+  "steps": [
+    {
+      "left_dataset": "groundwater",
+      "right_dataset": "humidity",
+      "merge_keys": [
+        "District LGD Code",
+        "Date"
+      ],
+      "merge_strategy": "outer",
+      "rows_before_left": 48153,
+      "rows_before_right": 57730,
+      "rows_after": 58513,
+      "matched_rows": 47370,
+      "left_only_rows": 783,
+      "right_only_rows": 10360,
+      "null_statistics": {
+        "District LGD Code": 0,
+        "Date": 0,
+        "District": 0,
+        "groundwater_level": 10360,
+        "groundwater_station_count": 10360,
+        "relative_humidity": 783,
+        "humidity_station_count": 783
+      },
+      "execution_time_seconds": 0.04561689996626228
+    },
+    {
+      "left_dataset": "groundwater+humidity",
+      "right_dataset": "rainfall",
+      "merge_keys": [
+        "District LGD Code",
+        "Date"
+      ],
+      "merge_strategy": "outer",
+      "rows_before_left": 58513,
+      "rows_before_right": 31501,
+      "rows_after": 58514,
+      "matched_rows": 31500,
+      "left_only_rows": 27013,
+      "right_only_rows": 1,
+      "null_statistics": {
+        "District LGD Code": 0,
+        "Date": 0,
+        "District": 0,
+        "groundwater_level": 10361,
+        "groundwater_station_count": 10361,
+        "relative_humidity": 784,
+        "humidity_station_count": 784,
+        "rainfall_mm": 27013,
+        "rainfall_station_count": 27013
+      },
+      "execution_time_seconds": 0.030550999916158617
+    },
+    {
+      "left_dataset": "groundwater+humidity+rainfall",
+      "right_dataset": "river_level",
+      "merge_keys": [
+        "District LGD Code",
+        "Date"
+      ],
+      "merge_strategy": "outer",
+      "rows_before_left": 58514,
+      "rows_before_right": 15558,
+      "rows_after": 58518,
+      "matched_rows": 15554,
+      "left_only_rows": 42960,
+      "right_only_rows": 4,
+      "null_statistics": {
+        "District LGD Code": 0,
+        "Date": 0,
+        "District": 0,
+        "groundwater_level": 10365,
+        "groundwater_station_count": 10365,
+        "relative_humidity": 788,
+        "humidity_station_count": 788,
+        "rainfall_mm": 27017,
+        "rainfall_station_count": 27017,
+        "river_level": 42960,
+        "river_station_count": 42960
+      },
+      "execution_time_seconds": 0.032480700057931244
+    },
+    {
+      "left_dataset": "groundwater+humidity+rainfall+river_level",
+      "right_dataset": "temperature",
+      "merge_keys": [
+        "District LGD Code",
+        "Date"
+      ],
+      "merge_strategy": "outer",
+      "rows_before_left": 58518,
+      "rows_before_right": 57730,
+      "rows_after": 58518,
+      "matched_rows": 57730,
+      "left_only_rows": 788,
+      "right_only_rows": 0,
+      "null_statistics": {
+        "District LGD Code": 0,
+        "Date": 0,
+        "District": 0,
+        "groundwater_level": 10365,
+        "groundwater_station_count": 10365,
+        "relative_humidity": 788,
+        "humidity_station_count": 788,
+        "rainfall_mm": 27017,
+        "rainfall_station_count": 27017,
+        "river_level": 42960,
+        "river_station_count": 42960,
+        "air_temperature": 788,
+        "temperature_station_count": 788
+      },
+      "execution_time_seconds": 0.026186899980530143
+    }
+  ],
+  "final_rows": 58518,
+  "final_columns": 13
+}

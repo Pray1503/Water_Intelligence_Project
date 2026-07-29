@@ -1,0 +1,24 @@
+{
+  "dataset_name": "temperature_daily_district",
+  "category": "temperature",
+  "source_files": [
+    "temperature 2021-2025_cleaned.csv"
+  ],
+  "input_rows": 7964403,
+  "output_rows": 57730,
+  "aggregation_method": "mean",
+  "measurement_column": "Air Temperature Telemetry Hourly (AoC)",
+  "missing_measurements": 112521,
+  "station_count_statistics": {
+    "min": 1,
+    "max": 11,
+    "mean": 3.7503204573012296,
+    "median": 3.0
+  },
+  "district_count": 33,
+  "date_range": {
+    "start": "2021-01-01",
+    "end": "2025-12-31"
+  },
+  "execution_time_seconds": 6.015591199975461
+}

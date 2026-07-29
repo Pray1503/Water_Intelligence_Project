@@ -1,0 +1,24 @@
+{
+  "dataset_name": "groundwater_daily_district",
+  "category": "groundwater",
+  "source_files": [
+    "gwl_tel_6_hourly_gujarat_sw_gw_gj_2021_2025_cleaned.csv"
+  ],
+  "input_rows": 8820077,
+  "output_rows": 48153,
+  "aggregation_method": "mean",
+  "measurement_column": "Groundwater Level Telemetry 6 Hourly (meter)",
+  "missing_measurements": 4447,
+  "station_count_statistics": {
+    "min": 1,
+    "max": 357,
+    "mean": 46.792640126264196,
+    "median": 34.0
+  },
+  "district_count": 33,
+  "date_range": {
+    "start": "2021-01-01",
+    "end": "2025-12-31"
+  },
+  "execution_time_seconds": 9.358626200002618
+}

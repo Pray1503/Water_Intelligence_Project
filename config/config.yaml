@@ -3,9 +3,12 @@ paths:
   data_cleaned: data/cleaned
   data_aggregated: data/aggregated
   data_processed: data/processed
+
   reports_dir: reports
   dataset_inventory: reports/dataset_inventory.csv
   profiling_dir: reports/profiling
   validation_dir: reports/validation
   cleaning_dir: reports/cleaning
   audit_dir: reports/dataset_audit
+
+  master_dataset_reports: reports/master_dataset

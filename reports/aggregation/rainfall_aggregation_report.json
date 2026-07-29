@@ -1,0 +1,24 @@
+{
+  "dataset_name": "rainfall_daily_district",
+  "category": "rainfall",
+  "source_files": [
+    "rainfall_tel_hr_gujarat_sw_gw_gj_2021_2025_cleaned.csv"
+  ],
+  "input_rows": 851916,
+  "output_rows": 31501,
+  "aggregation_method": "sum",
+  "measurement_column": "Telemetry Hourly Rainfall (mm)",
+  "missing_measurements": 409,
+  "station_count_statistics": {
+    "min": 1,
+    "max": 34,
+    "mean": 4.291641535189359,
+    "median": 3.0
+  },
+  "district_count": 33,
+  "date_range": {
+    "start": "2021-01-04",
+    "end": "2025-12-31"
+  },
+  "execution_time_seconds": 0.6623772999737412
+}
