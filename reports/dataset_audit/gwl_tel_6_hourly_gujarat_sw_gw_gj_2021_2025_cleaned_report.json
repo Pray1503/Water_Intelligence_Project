@@ -49,7 +49,7 @@
         "Data Acquisition Time": "str",
         "Groundwater Level Telemetry 6 Hourly (meter)": "float64"
     },
-    "Memory Usage (bytes)": 4893130521,
+    "Memory Usage (bytes)": 2732211656,
     "Missing Values Per Column": {
         "SlNo": 0,
         "Station": 0,
@@ -84,5 +84,5 @@
     "Number of Districts": 34,
     "Ahmedabad District Present": true,
     "Audit Status": "WARNING",
-    "Audit Timestamp": "2026-07-28T15:29:35.280456"
+    "Audit Timestamp": "2026-07-29T01:33:25.266270"
 }

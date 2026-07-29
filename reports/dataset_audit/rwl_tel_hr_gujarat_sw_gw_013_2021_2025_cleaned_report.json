@@ -53,7 +53,7 @@
         "Data Acquisition Time": "str",
         "River Water Level Telemetry Hourly (meter)": "float64"
     },
-    "Memory Usage (bytes)": 1344937010,
+    "Memory Usage (bytes)": 585097198,
     "Missing Values Per Column": {
         "SlNo": 0,
         "Station": 0,
@@ -90,5 +90,5 @@
     "Number of Districts": 10,
     "Ahmedabad District Present": true,
     "Audit Status": "WARNING",
-    "Audit Timestamp": "2026-07-28T15:30:17.221535"
+    "Audit Timestamp": "2026-07-29T01:34:03.328285"
 }
