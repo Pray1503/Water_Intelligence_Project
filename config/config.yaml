@@ -1,6 +1,7 @@
 paths:
   data_raw: data/raw
   data_cleaned: data/cleaned
+  data_aggregated: data/aggregated
   data_processed: data/processed
   reports_dir: reports
   dataset_inventory: reports/dataset_inventory.csv
