@@ -37,6 +37,7 @@ logger = logging.getLogger(__name__)
 # CONFIGURATION
 # ===========================================================================
 
+
 def load_config(config_path: Path) -> Dict[str, Any]:
     """Load and return the YAML configuration file."""
     try:
@@ -70,6 +71,7 @@ def load_inventory(inventory_path: Path) -> pd.DataFrame:
 # CATEGORY DETECTION  (mirrors the logic already in Stage 1)
 # ===========================================================================
 
+
 def detect_category(filename: str) -> str:
     """Infer the dataset category from the filename (case-insensitive)."""
     name = filename.lower()
@@ -92,8 +94,19 @@ def detect_category(filename: str) -> str:
 
 # Sentinel strings that should all map to NaN.
 _MISSING_SENTINELS: List[str] = [
-    "NA", "N/A", "NULL", "null", "na", "n/a",
-    "None", "none", "NONE", "nan", "NaN", "--", "-",
+    "NA",
+    "N/A",
+    "NULL",
+    "null",
+    "na",
+    "n/a",
+    "None",
+    "none",
+    "NONE",
+    "nan",
+    "NaN",
+    "--",
+    "-",
 ]
 
 
@@ -222,9 +235,7 @@ def validate_coordinates(df: pd.DataFrame) -> Tuple[pd.DataFrame, int]:
     lon = pd.to_numeric(df[lon_col], errors="coerce")
 
     valid_mask = (
-        lat.notna() & lon.notna()
-        & lat.between(-90, 90)
-        & lon.between(-180, 180)
+        lat.notna() & lon.notna() & lat.between(-90, 90) & lon.between(-180, 180)
     )
     df = df[valid_mask].reset_index(drop=True)
     return df, before - len(df)
@@ -233,6 +244,7 @@ def validate_coordinates(df: pd.DataFrame) -> Tuple[pd.DataFrame, int]:
 # ===========================================================================
 # DATASET-SPECIFIC CLEANING RULES
 # ===========================================================================
+
 
 def _find_sensor_column(df: pd.DataFrame, keywords: List[str]) -> Optional[str]:
     """Return the first column whose lower-case name contains any keyword."""
@@ -361,6 +373,7 @@ def apply_dataset_specific_rules(
 # REPORT & PERSISTENCE
 # ===========================================================================
 
+
 def generate_cleaning_report(
     dataset_name: str,
     dataset_category: str,
@@ -401,14 +414,34 @@ def save_cleaned_dataset(
     df: pd.DataFrame,
     cleaned_dir: Path,
     dataset_name: str,
+    force: bool = False,
 ) -> Path:
     """
-    Write the cleaned DataFrame to *cleaned_dir* as a UTF-8 CSV with no index.
-    The output filename is <dataset_name>_cleaned.csv.
+    Save a cleaned dataset.
+
+    Existing cleaned datasets are preserved unless force=True.
+
+    Returns
+    -------
+    Path
+        Path to the cleaned dataset.
     """
+
     cleaned_dir.mkdir(parents=True, exist_ok=True)
+
     out_path = cleaned_dir / f"{dataset_name}_cleaned.csv"
+
+    if out_path.exists() and not force:
+        logger.info(f"[SAVE SKIP] Cleaned dataset already exists: {out_path.name}")
+        return out_path
+
+    if out_path.exists() and force:
+        logger.info(f"[OVERWRITE] Existing cleaned dataset: {out_path.name}")
+
     df.to_csv(out_path, index=False, encoding="utf-8")
+
+    logger.info(f"[SAVED] {out_path.name}")
+
     return out_path
 
 
@@ -432,11 +465,13 @@ def save_cleaning_report(
 # PER-DATASET ORCHESTRATION
 # ===========================================================================
 
+
 def process_dataset(
     row: pd.Series,
     cleaned_dir: Path,
     cleaning_reports_dir: Path,
     project_root: Path,
+    force: bool = False,
 ) -> bool:
     """
     Execute the full cleaning pipeline for a single dataset entry from the
@@ -461,6 +496,15 @@ def process_dataset(
     dataset_name: str = str(row.get("Dataset Name", "unknown"))
     category: str = str(row.get("Dataset Category", "Unknown"))
     abs_path_str: str = str(row.get("Absolute Path", ""))
+
+    # -------------------------------------------------------------
+    # Skip datasets that have already been cleaned
+    # -------------------------------------------------------------
+    out_csv = cleaned_dir / f"{dataset_name}_cleaned.csv"
+
+    if out_csv.exists() and not force:
+        logger.info(f"[SKIP] {dataset_name} already cleaned.")
+        return True
 
     logger.info(f"{'=' * 60}")
     logger.info(f"Dataset: {dataset_name}")
@@ -555,7 +599,9 @@ def process_dataset(
     # ------------------------------------------------------------------
     logger.info("Applying dataset-specific cleaning rules...")
     df, invalid_sensor_values_removed = apply_dataset_specific_rules(df, category)
-    logger.info(f"  Invalid sensor values replaced with NaN: {invalid_sensor_values_removed:,}")
+    logger.info(
+        f"  Invalid sensor values replaced with NaN: {invalid_sensor_values_removed:,}"
+    )
 
     # ------------------------------------------------------------------
     # 10. Preserve original column order (names may have been whitespace-stripped)
@@ -588,7 +634,7 @@ def process_dataset(
     # ------------------------------------------------------------------
     logger.info("Saving cleaned dataset...")
     try:
-        out_csv = save_cleaned_dataset(df, cleaned_dir, dataset_name)
+        out_csv = save_cleaned_dataset(df, cleaned_dir, dataset_name, force=force)
         logger.info(f"  Saved: {out_csv.relative_to(project_root).as_posix()}")
     except Exception as exc:
         logger.error(f"Failed to save cleaned CSV for {dataset_name}: {exc}")
@@ -630,6 +676,7 @@ def process_dataset(
 # MAIN ORCHESTRATOR
 # ===========================================================================
 
+
 def clean_datasets(config: Dict[str, Any], project_root: Path) -> None:
     """
     Top-level orchestrator for Stage 4.
@@ -644,12 +691,8 @@ def clean_datasets(config: Dict[str, Any], project_root: Path) -> None:
     inventory_path = project_root / paths.get(
         "dataset_inventory", "reports/dataset_inventory.csv"
     )
-    cleaned_dir = project_root / paths.get(
-        "data_cleaned", "data/cleaned"
-    )
-    cleaning_reports_dir = project_root / paths.get(
-        "cleaning_dir", "reports/cleaning"
-    )
+    cleaned_dir = project_root / paths.get("data_cleaned", "data/cleaned")
+    cleaning_reports_dir = project_root / paths.get("cleaning_dir", "reports/cleaning")
 
     logger.info("=" * 60)
     logger.info("Stage 4: Data Cleaning & Consolidation")
@@ -684,9 +727,7 @@ def clean_datasets(config: Dict[str, Any], project_root: Path) -> None:
             # internally, but this guard prevents any unexpected exception from
             # breaking the outer loop.
             dataset_name = str(row.get("Dataset Name", "unknown"))
-            logger.error(
-                f"Unexpected error while processing {dataset_name}: {exc}"
-            )
+            logger.error(f"Unexpected error while processing {dataset_name}: {exc}")
             failure_count += 1
 
     logger.info("\n" + "=" * 60)
@@ -701,6 +742,7 @@ def clean_datasets(config: Dict[str, Any], project_root: Path) -> None:
 # ===========================================================================
 # ENTRY POINT
 # ===========================================================================
+
 
 def main() -> None:
     """Entry point — resolve project root, load config, run Stage 4."""
