@@ -1,0 +1,29 @@
+{
+  "preprocessing_version": "1.0.0",
+  "timestamp": "2026-07-30T12:25:14.177050+00:00",
+  "execution_time_seconds": 0.783,
+  "train_rows": 30352,
+  "validation_rows": 8904,
+  "test_rows": 8819,
+  "numeric_feature_count": 75,
+  "categorical_feature_count": 1,
+  "output_feature_count": 108,
+  "pipeline_sha256": "38099ceb5ab4cce42414cf74f094db441a22c4592e1cc9268c103023c2904dfc",
+  "dropped_unsupported_columns": [],
+  "excluded_columns": [
+    "target",
+    "District LGD Code",
+    "Date"
+  ],
+  "numeric_impute_strategy": "median",
+  "categorical_impute_strategy": "most_frequent",
+  "scale_numeric": true,
+  "random_state": 42,
+  "output_paths": {
+    "train": "C:\\Water_Intelligence_Project\\data\\preprocessed\\train.parquet",
+    "validation": "C:\\Water_Intelligence_Project\\data\\preprocessed\\validation.parquet",
+    "test": "C:\\Water_Intelligence_Project\\data\\preprocessed\\test.parquet",
+    "preprocessing_pipeline": "C:\\Water_Intelligence_Project\\models\\preprocessing_pipeline.joblib",
+    "preprocessing_metadata": "C:\\Water_Intelligence_Project\\models\\preprocessing_metadata.json"
+  }
+}

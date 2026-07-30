@@ -4,11 +4,36 @@ paths:
   data_aggregated: data/aggregated
   data_processed: data/processed
 
+  feature_dataset: data/features/feature_dataset.parquet
+  data_splits: data/splits
+  data_preprocessed: data/preprocessed
+
+  models_dir: models
+
   reports_dir: reports
   dataset_inventory: reports/dataset_inventory.csv
   profiling_dir: reports/profiling
   validation_dir: reports/validation
   cleaning_dir: reports/cleaning
   audit_dir: reports/dataset_audit
-
   master_dataset_reports: reports/master_dataset
+
+target_engineering:
+  source_column: groundwater_level
+  group_column: District LGD Code
+  date_column: Date
+  forecast_horizon_days: 7
+  transform: identity
+  target_column_name: target
+
+split:
+  train_ratio: 0.70
+  validation_ratio: 0.15
+  test_ratio: 0.15
+
+preprocessing:
+  numeric_impute_strategy: median
+  categorical_impute_strategy: most_frequent
+  scale_numeric: true
+  onehot_min_frequency: 0.01
+  random_state: 42

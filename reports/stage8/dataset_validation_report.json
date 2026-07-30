@@ -1,0 +1,247 @@
+{
+  "version": "1.0.0",
+  "stage": "Stage8_BuildTrainingDataset",
+  "created_timestamp": "2026-07-30T11:03:16.506097+00:00",
+  "feature_dataset_path": "C:\\Water_Intelligence_Project\\data\\features\\feature_dataset.parquet",
+  "dataset_sha256": "52062b6b5c67cef07fa91e4ce21785990539a80e17774adf897de3ae5217553b",
+  "target_config": {
+    "source_column": "groundwater_level",
+    "group_column": "District LGD Code",
+    "date_column": "Date",
+    "forecast_horizon_days": 7,
+    "transform": "identity",
+    "target_column_name": "target"
+  },
+  "target_stats": {
+    "n_total": 58518,
+    "n_null": 10443,
+    "n_valid": 48075
+  },
+  "leakage_audit_warnings": [],
+  "temporal_continuity": {
+    "438": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1813,
+      "max_gap_days": 4
+    },
+    "439": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1795,
+      "max_gap_days": 7
+    },
+    "440": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1627,
+      "max_gap_days": 29
+    },
+    "441": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1813,
+      "max_gap_days": 4
+    },
+    "442": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1813,
+      "max_gap_days": 4
+    },
+    "443": {
+      "min_date": "2021-01-02",
+      "max_date": "2025-12-31",
+      "n_dates": 1745,
+      "max_gap_days": 26
+    },
+    "444": {
+      "min_date": "2021-01-08",
+      "max_date": "2025-12-31",
+      "n_dates": 1692,
+      "max_gap_days": 26
+    },
+    "445": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1794,
+      "max_gap_days": 9
+    },
+    "446": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1813,
+      "max_gap_days": 4
+    },
+    "447": {
+      "min_date": "2021-01-02",
+      "max_date": "2025-12-31",
+      "n_dates": 1765,
+      "max_gap_days": 17
+    },
+    "448": {
+      "min_date": "2021-01-03",
+      "max_date": "2025-12-31",
+      "n_dates": 1791,
+      "max_gap_days": 17
+    },
+    "449": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1813,
+      "max_gap_days": 4
+    },
+    "450": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1813,
+      "max_gap_days": 4
+    },
+    "451": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1813,
+      "max_gap_days": 4
+    },
+    "452": {
+      "min_date": "2021-01-05",
+      "max_date": "2025-12-31",
+      "n_dates": 1766,
+      "max_gap_days": 23
+    },
+    "453": {
+      "min_date": "2021-01-04",
+      "max_date": "2025-12-31",
+      "n_dates": 1626,
+      "max_gap_days": 29
+    },
+    "454": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1788,
+      "max_gap_days": 10
+    },
+    "455": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1813,
+      "max_gap_days": 4
+    },
+    "456": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1813,
+      "max_gap_days": 4
+    },
+    "457": {
+      "min_date": "2021-01-02",
+      "max_date": "2025-12-31",
+      "n_dates": 1775,
+      "max_gap_days": 7
+    },
+    "458": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1813,
+      "max_gap_days": 4
+    },
+    "459": {
+      "min_date": "2021-01-02",
+      "max_date": "2025-12-31",
+      "n_dates": 1791,
+      "max_gap_days": 11
+    },
+    "460": {
+      "min_date": "2021-01-03",
+      "max_date": "2025-12-31",
+      "n_dates": 1806,
+      "max_gap_days": 4
+    },
+    "461": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1813,
+      "max_gap_days": 4
+    },
+    "462": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1782,
+      "max_gap_days": 10
+    },
+    "641": {
+      "min_date": "2021-01-08",
+      "max_date": "2025-12-31",
+      "n_dates": 1759,
+      "max_gap_days": 16
+    },
+    "668": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1767,
+      "max_gap_days": 28
+    },
+    "669": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1724,
+      "max_gap_days": 18
+    },
+    "672": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1800,
+      "max_gap_days": 8
+    },
+    "673": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1793,
+      "max_gap_days": 18
+    },
+    "674": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1683,
+      "max_gap_days": 28
+    },
+    "675": {
+      "min_date": "2021-01-01",
+      "max_date": "2025-12-31",
+      "n_dates": 1720,
+      "max_gap_days": 24
+    },
+    "676": {
+      "min_date": "2021-01-04",
+      "max_date": "2025-12-31",
+      "n_dates": 1786,
+      "max_gap_days": 12
+    }
+  },
+  "split": {
+    "n_dropped_null_target": 10443,
+    "train_end_date": "2024-06-10",
+    "validation_end_date": "2025-03-07",
+    "train_rows": 30352,
+    "validation_rows": 8904,
+    "test_rows": 8819,
+    "train_date_range": [
+      "2021-01-01",
+      "2024-06-10"
+    ],
+    "validation_date_range": [
+      "2024-06-11",
+      "2025-03-07"
+    ],
+    "test_date_range": [
+      "2025-03-08",
+      "2025-12-24"
+    ]
+  },
+  "output_paths": {
+    "train": "C:\\Water_Intelligence_Project\\data\\splits\\train.parquet",
+    "validation": "C:\\Water_Intelligence_Project\\data\\splits\\validation.parquet",
+    "test": "C:\\Water_Intelligence_Project\\data\\splits\\test.parquet",
+    "target_transform_metadata": "C:\\Water_Intelligence_Project\\models\\target_transform_metadata.json"
+  }
+}

@@ -72,6 +72,8 @@ data/cleaned/
 data/processed/
 data/features/
 data/intermediate/
+data/splits/
+data/preprocessed/
 
 # ==========================================================
 # Generated Reports
@@ -111,4 +113,7 @@ models/
 *.temp
 output.txt
 
+# ==========================================================
+# Keep sample data
+# ==========================================================
 !data/sample/
