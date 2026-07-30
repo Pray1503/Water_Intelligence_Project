@@ -17,6 +17,15 @@ def main():
     build_master_dataset_script = (
         project_root / "scripts" / "06_build_master_dataset.py"
     )
+    build_feature_dataset_script = (
+        project_root / "scripts" / "07_build_feature_dataset.py"
+    )
+    generate_labels_script = (
+        project_root / "scripts" / "08_generate_labels.py"
+    )
+    train_models_script = (
+        project_root / "scripts" / "09_train_models.py"
+    )
 
     try:
         # Run Phase 1A: Dataset Discovery
@@ -36,6 +45,15 @@ def main():
 
         # Run Stage 6: Master Dataset Builder
         subprocess.run([sys.executable, str(build_master_dataset_script)], check=True)
+
+        # Run Stage 7: Feature Engineering
+        subprocess.run([sys.executable, str(build_feature_dataset_script)], check=True)
+
+        # Run Stage 8: Water Stress Label Generation
+        subprocess.run([sys.executable, str(generate_labels_script)], check=True)
+
+        # Run Stage 9: Model Training
+        subprocess.run([sys.executable, str(train_models_script)], check=True)
     except subprocess.CalledProcessError as e:
         logging.error(f"Pipeline execution failed: {e}")
         sys.exit(1)

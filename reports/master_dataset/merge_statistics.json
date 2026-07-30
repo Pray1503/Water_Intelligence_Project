@@ -35,7 +35,7 @@
         "relative_humidity": 783,
         "humidity_station_count": 783
       },
-      "execution_time_seconds": 0.04561689996626228
+      "execution_time_seconds": 0.07635750000008557
     },
     {
       "left_dataset": "groundwater+humidity",
@@ -62,7 +62,7 @@
         "rainfall_mm": 27013,
         "rainfall_station_count": 27013
       },
-      "execution_time_seconds": 0.030550999916158617
+      "execution_time_seconds": 0.06728340000063326
     },
     {
       "left_dataset": "groundwater+humidity+rainfall",
@@ -91,7 +91,7 @@
         "river_level": 42960,
         "river_station_count": 42960
       },
-      "execution_time_seconds": 0.032480700057931244
+      "execution_time_seconds": 0.06365670000013779
     },
     {
       "left_dataset": "groundwater+humidity+rainfall+river_level",
@@ -122,7 +122,7 @@
         "air_temperature": 788,
         "temperature_station_count": 788
       },
-      "execution_time_seconds": 0.026186899980530143
+      "execution_time_seconds": 0.056574400000499736
     }
   ],
   "final_rows": 58518,
