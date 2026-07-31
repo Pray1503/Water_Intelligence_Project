@@ -275,7 +275,14 @@ without major architectural changes.
 
 # 👨‍💻 Team
 
-Developed as part of a Smart Water Intelligence Hackathon.
+This project was developed as part of a Smart Water Intelligence Hackathon by:
+
+- **Pray N Shah**
+- **Raj Prajapati**
+- **Khush Trivedi**
+- **Mukund Bhootra**
+
+Together, we collaborated to design and develop an AI-powered Water Intelligence Platform that combines machine learning, predictive analytics, geospatial visualization, and decision support to address real-world urban water management challenges.
 
 ---
 
