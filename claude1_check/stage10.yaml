@@ -1,0 +1,34 @@
+stage10:
+  datasets:
+    train: data/splits/train.parquet
+    validation: data/splits/validation.parquet
+    test: data/splits/test.parquet
+
+  validation:
+    target_column: target
+    feature_columns: []   # Keep empty for now
+    preprocessing_metadata_path: reports/preprocessing/preprocessing_metadata.json
+    expected_preprocessing_hash: null
+
+  models:
+    - name: RandomForestRegressor
+      enabled: true
+      random_state: 42
+      hyperparameters:
+        n_estimators: 300
+        max_depth: null
+
+    - name: XGBRegressor
+      enabled: true
+      random_state: 42
+      hyperparameters:
+        n_estimators: 300
+        learning_rate: 0.05
+        max_depth: 6
+
+    - name: LightGBMRegressor
+      enabled: false
+      random_state: 42
+      hyperparameters:
+        n_estimators: 300
+        learning_rate: 0.05

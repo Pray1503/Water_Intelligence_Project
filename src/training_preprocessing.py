@@ -10,6 +10,7 @@ import hashlib
 import json
 import logging
 from dataclasses import dataclass, replace
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, NamedTuple
 
@@ -61,9 +62,10 @@ class PreprocessingMetadata:
     scale_numeric: bool
     random_state: int
     pipeline_sha256: str | None = None
+    fitted_at: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
-        """Convert metadata to a serializable dictionary."""
+        """Convert metadata to a serializable dictionary, including Stage 10 compatibility aliases."""
         return {
             "numeric_columns": self.numeric_columns,
             "categorical_columns": self.categorical_columns,
@@ -75,6 +77,10 @@ class PreprocessingMetadata:
             "scale_numeric": self.scale_numeric,
             "random_state": self.random_state,
             "pipeline_sha256": self.pipeline_sha256,
+            "fitted_at": self.fitted_at,
+            # Stage 10 Compatibility Aliases
+            "feature_columns": self.feature_names_out,
+            "preprocessing_hash": self.pipeline_sha256,
         }
 
 
@@ -193,14 +199,24 @@ def preprocess_datasets(
     def _transform_split(df: pd.DataFrame, name: str) -> pd.DataFrame:
         if df.empty:
             return pd.DataFrame(columns=feature_names_out)
-        try:
-            arr = transformer.transform(df[feature_cols])
-            res_df = pd.DataFrame(arr, columns=feature_names_out, index=df.index)
 
-            for col in excluded_cols:
-                if col in df.columns:
-                    res_df[col] = df[col]
+        try:
+            # Transform only the feature columns.
+            arr = transformer.transform(df[feature_cols])
+            res_df = pd.DataFrame(
+                arr,
+                columns=feature_names_out,
+                index=df.index,
+            )
+
+            # Preserve ONLY the target column for model training.
+            # The group column (District LGD Code) and the date column (Date)
+            # are intentionally excluded from the final preprocessed dataset.
+            if config.target_column in df.columns:
+                res_df[config.target_column] = df[config.target_column]
+
             return res_df
+
         except Exception as exc:  # noqa: BLE001
             raise TrainingPreprocessingError(
                 f"Failed to transform '{name}' split: {exc}"
@@ -220,6 +236,7 @@ def preprocess_datasets(
         categorical_impute_strategy=config.categorical_impute_strategy,
         scale_numeric=config.scale_numeric,
         random_state=config.random_state,
+        fitted_at=datetime.now(timezone.utc).isoformat(),
     )
 
     return PreprocessedDatasets(
